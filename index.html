@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shopify Compliance Advisor Connection</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --shopify-blue: #008060;
+      --shopify-green: #25D366;
+      --shopify-dark: #004C3F;
+      --shopify-red: #D93025;
+      --shopify-redd: #B22222;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f8;
+    }
+    .fade-in {
+      animation: fadeIn 1s ease-in forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-center items-center p-4">
+
+  <!-- Loading Section -->
+  <div id="loading-container" class="bg-white rounded-xl shadow-lg p-6 w-full max-w-md text-center">
+    <h1 class="text-xl font-bold text-gray-800 mb-4">Connecting to a Shopify Compliance Advisor...</h1>
+    <div class="w-full bg-gray-200 rounded-full h-4 mb-4 overflow-hidden">
+      <div id="progress-bar" class="bg-[var(--shopify-blue)] h-4 rounded-full transition-all duration-300 ease-in-out" style="width: 0%;"></div>
+    </div>
+    <p id="progress-text" class="text-gray-600 font-medium">0%</p>
+  </div>
+
+  <!-- Advisor Connection Section -->
+  <div id="advisor-container" class="hidden bg-white rounded-xl shadow-lg p-6 w-full max-w-md fade-in">
+    <h2 class="text-xl font-bold text-gray-800 mb-4">You’re now connected to a Shopify Compliance Advisor</h2>
+    <p class="text-gray-700 mb-6">Choose your preferred communication channel below:</p>
+    
+    <div class="space-y-3">
+      <!-- WhatsApp -->
+      <a href="https://wa.link/yrlthx" target="_blank" rel="noopener noreferrer" 
+         class="block bg-[var(--shopify-blue)] hover:bg-[var(--shopify-dark)] text-white py-3 px-4 rounded-lg text-center transition-colors duration-300 flex items-center justify-center" 
+         title="Connect via WhatsApp">
+        <i class="fab fa-whatsapp mr-2 text-lg"></i> WHATSAPP
+      </a>
+
+      <!-- Telegram -->
+      <a href="https://t.me/+2349168820117" target="_blank" rel="noopener noreferrer" 
+         class="block bg-[var(--shopify-green)] hover:bg-[var(--shopify-dark)] text-white py-3 px-4 rounded-lg text-center transition-colors duration-300 flex items-center justify-center" 
+         title="Connect via Telegram">
+        <i class="fab fa-telegram-plane mr-2 text-lg"></i> TELEGRAM
+      </a>
+
+      <!-- Email -->
+      <a href="mailto:leoburnettdigital02@gmail.com" 
+         class="block bg-[var(--shopify-red)] hover:bg-[var(--shopify-redd)] text-white py-3 px-4 rounded-lg text-center transition-colors duration-300 flex items-center justify-center" 
+         title="Send Email">
+        <i class="fas fa-envelope mr-2 text-lg"></i> EMAIL
+      </a>
+    </div>
+  </div>
+
+  <script>
+    const progressBar = document.getElementById('progress-bar');
+    const progressText = document.getElementById('progress-text');
+    const loadingContainer = document.getElementById('loading-container');
+    const advisorContainer = document.getElementById('advisor-container');
+
+    let progress = 0;
+    const interval = setInterval(() => {
+      progress += 1;
+      progressBar.style.width = progress + '%';
+      progressText.textContent = progress + '%';
+
+      if (progress >= 100) {
+        clearInterval(interval);
+        setTimeout(() => {
+          loadingContainer.classList.add('hidden');
+          advisorContainer.classList.remove('hidden');
+          advisorContainer.classList.add('show');
+        }, 500);
+      }
+    }, 100); // 10 seconds total
+  </script>
+
+</body>
+</html>
